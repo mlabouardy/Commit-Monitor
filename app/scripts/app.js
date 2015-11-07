@@ -27,6 +27,10 @@ angular
         templateUrl: 'views/repository.html',
         controller: 'RepositoryCtrl'
       })
+      .when('/repository/:name', {
+        templateUrl: 'views/repository-info.html',
+        controller: 'RepositoryInfoCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
