@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name commitMonitorApp.controller:AboutCtrl
+ * @name commitMonitorApp.controller:RepositoryCtrl
  * @description
- * # AboutCtrl
+ * # RepositoryCtrl
  * Controller of the commitMonitorApp
  */
 angular.module('commitMonitorApp')
-  .controller('AboutCtrl', function () {
+  .controller('RepositoryCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
