@@ -15,13 +15,15 @@ angular.module('commitMonitorApp')
  			$scope.commits=[];
  			$scope.users=[];
  			for(var i=0;i<commits.length;i++){
- 				var taskTag= commits[i].commit.message.substr(0, commits[i].commit.message.indexOf(':')); 
+ 				var message=commits[i].commit.message;
+ 				var taskTag= message.substr(0, message.indexOf(':')); 
+ 				var currentMessage=message.substr(message.indexOf(":") + 1); 
  				if(taskTag==$scope.task){
 	 				$scope.commits.push({
 		 				commiter:commits[i].commit.committer.name,
 		 				email:commits[i].commit.committer.email,
 		 				date:commits[i].commit.committer.date,
-		 				message:commits[i].commit.message,
+		 				message:currentMessage,
 		 				files: "#/repository/"+$routeParams.user+'/'+$routeParams.repo+"/commits/"+commits[i].commit.tree.sha
 	 				});
  				}
