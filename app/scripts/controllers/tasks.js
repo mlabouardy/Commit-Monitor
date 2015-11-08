@@ -34,7 +34,8 @@ angular.module('commitMonitorApp')
     			commits:baseUrl+"T3"
     		}
     	];
-        
+
+    
     	$scope.newTask=function(){
     		$scope.tasks.push($scope.task);
     		$scope.task=[];
