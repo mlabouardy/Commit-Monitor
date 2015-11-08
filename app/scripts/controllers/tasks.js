@@ -10,6 +10,7 @@
 angular.module('commitMonitorApp')
   .controller('TasksCtrl', function ($scope, $routeParams, repoFactory) {
   		var baseUrl="#/tasks/"+$routeParams.user+'/'+$routeParams.repo+'/task/';
+        
     	$scope.tasks=[
     		{
     			name:"Model",
