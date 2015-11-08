@@ -48,7 +48,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="task in tasks track by $index">
-								<td>{{task.tag}}</td>
+								<td><a class="btn btn-danger btn-xs" ng-href="{{task.commits}}">View</a> {{task.tag}}</td>
 								<td>{{task.name}}</td>
 								<td>{{task.developer}}</td>
 								<td>{{task.priority}}</td>

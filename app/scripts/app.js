@@ -43,6 +43,10 @@ angular
         templateUrl: 'views/tasks.html',
         controller: 'TasksCtrl'
       })
+      .when('/tasks/:user/:repo/task/:tag', {
+        templateUrl: 'views/task-commits.html',
+        controller: 'TaskCommitsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
