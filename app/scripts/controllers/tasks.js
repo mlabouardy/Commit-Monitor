@@ -35,6 +35,7 @@ angular.module('commitMonitorApp')
     		}
     	];
 
+
     	$scope.newTask=function(){
     		$scope.tasks.push($scope.task);
     		$scope.task=[];
