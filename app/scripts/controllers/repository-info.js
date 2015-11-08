@@ -82,5 +82,33 @@
  			var context = document.getElementById('languagesChart').getContext('2d');
  			var skillsChart = new Chart(context).Pie($scope.data);
  		});
+
+
+ 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/contents";
+ 		$http.get(url).success(function(contents){
+ 			$scope.contents=[];
+ 			for(var i=0;i<contents.length;i++){
+ 				$scope.contents.push({
+ 					name:contents[i].name,
+ 					size: Math.round( ((contents[i].size /1000)) * 10 ) / 10,
+ 					download:contents[i].download_url
+ 				});
+ 			}
+ 		});
+
+ 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/commits";
+ 		$http.get(url).success(function(commits){
+ 			$scope.commits=[];
+ 			for(var i=0;i<commits.length;i++){
+ 				$scope.commits.push({
+	 				commiter:commits[i].commit.committer.name,
+	 				email:commits[i].commit.committer.email,
+	 				date:commits[i].commit.committer.date,
+	 				message:commits[i].commit.message,
+	 				files:commits[i].commit.tree.url
+ 				});
+ 			}
+ 		});
+
  	});
 });
