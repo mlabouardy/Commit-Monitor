@@ -35,6 +35,10 @@ angular
         templateUrl: 'views/commit-files.html',
         controller: 'CommitFilesCtrl'
       })
+      .when('/repository-create', {
+        templateUrl: 'views/repository-create.html',
+        controller: 'RepositoryCreateCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

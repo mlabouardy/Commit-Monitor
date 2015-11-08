@@ -7,11 +7,6 @@
  * # MainCtrl
  * Controller of the commitMonitorApp
  */
-angular.module('commitMonitorApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+ angular.module('commitMonitorApp')
+ .controller('MainCtrl', function ($scope, $location) {
+ });
