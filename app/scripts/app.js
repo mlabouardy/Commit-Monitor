@@ -27,7 +27,7 @@ angular
         templateUrl: 'views/repository.html',
         controller: 'RepositoryCtrl'
       })
-      .when('/repository/:name', {
+      .when('/repository/:user/:repo', {
         templateUrl: 'views/repository-info.html',
         controller: 'RepositoryInfoCtrl'
       })

@@ -7,12 +7,11 @@
  * # RepositoryCtrl
  * Controller of the commitMonitorApp
  */
-angular.module('commitMonitorApp')
-  .controller('RepositoryCtrl', function ($scope, $location, $http) {
-  	$scope.repository="o";
-    $scope.getInfo=function(){
-    	$http.get('https://api.github.com/repos/'+$scope.repository).success(function(data){
-    		$location.path('repository/'+data.id);
-    	});
-    };
-  });
+ angular.module('commitMonitorApp')
+ .controller('RepositoryCtrl', function ($scope, $location, $http) {
+ 	$scope.getInfo=function(){
+ 		$http.get('https://api.github.com/repos/'+$scope.repository).success(function(data){
+ 			$location.path('repository/'+$scope.repository);
+ 		});
+ 	};
+ });
