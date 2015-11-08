@@ -10,7 +10,7 @@
 angular.module('commitMonitorApp')
   .factory('userFactory', function ($http, authenticationFactory) {
      var baseUrl="https://api.github.com/users/";
-     authenticationFactory.setCredentials('mlabouardy','sinworm66125');
+     authenticationFactory.login();
     
     return {
       getFollowers: function(user){

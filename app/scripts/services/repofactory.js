@@ -11,7 +11,7 @@ angular.module('commitMonitorApp')
   .factory('repoFactory', function ($http, authenticationFactory) {
     var baseUrl="https://api.github.com/repos/";
    
-    authenticationFactory.setCredentials('mlabouardy','sinworm66125');
+    authenticationFactory.login();
     // Public API here
     return {
       getInfo: function(user, repo){

@@ -7,13 +7,12 @@
  * # authenticationFactory
  * Factory in the commitMonitorApp.
  */
-angular.module('commitMonitorApp')
-  .factory('authenticationFactory', function ($http, $base64) {
-    
-    return {
-      setCredentials: function (username, password) {
-         var authdata = $base64.encode(username + ':' + password);
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
-      }
-    };
-  });
+ angular.module('commitMonitorApp')
+ .factory('authenticationFactory', function ($http, $cookieStore) {
+
+  return {
+    login: function () {
+      $http.defaults.headers.common['Authorization'] = 'Basic ' + $cookieStore.get('globals'); 
+  }
+};
+});

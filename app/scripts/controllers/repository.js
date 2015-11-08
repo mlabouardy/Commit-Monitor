@@ -8,14 +8,17 @@
  * Controller of the commitMonitorApp
  */
  angular.module('commitMonitorApp')
- .controller('RepositoryCtrl', function ($scope, $location, $http, $base64) {
+ .controller('RepositoryCtrl', function ($scope, $location, $base64, $http, authenticationFactory, $cookieStore, $rootScope) {
  	$scope.getInfo=function(){
- 		 var authdata = $base64.encode("mlabouardy" + ':' + "sinworm66125");
-
- console.log(authdata);
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
- 		$http.get('https://api.github.com/repos/'+$scope.repository).success(function(data){
+ 		var authdata = $base64.encode($scope.username + ':' + $scope.password);
+ 		$cookieStore.put('globals', authdata);
+ 		authenticationFactory.login();
+ 		$http.get('https://api.github.com/repos/'+$scope.repository)
+ 		.success(function(data){
  			$location.path('repository/'+$scope.repository);
+ 		})
+ 		.error(function(){
+ 			$scope.error="Not found or private repository ";
  		});
  	};
 
