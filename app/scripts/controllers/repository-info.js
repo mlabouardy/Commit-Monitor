@@ -30,6 +30,14 @@
  		});
 
 
+ 		function getRandomColor() {
+ 			var letters = '0123456789ABCDEF'.split('');
+ 			var color = '#';
+ 			for (var i = 0; i < 6; i++ ) {
+ 				color += letters[Math.floor(Math.random() * 16)];
+ 			}
+ 			return color;
+ 		}
 
  		$scope.repo={
  			private_repo:data.private,
@@ -51,23 +59,25 @@
  		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/contributors";
  		$http.get(url).success(function(contributors){
  			$scope.contributors=[];
+ 			$scope.data=[];
  			for(var i=0;i<contributors.length;i++){
  				$scope.contributors.push({
  					login:contributors[i].login,
  					avatar:contributors[i].avatar_url,
  					contributions:contributors[i].contributions
  				});
+
+ 				$scope.data.push({
+ 					value: contributors[i].contributions,
+ 					label: contributors[i].login,
+ 					color: getRandomColor()
+ 				});
  			}
+ 			var context = document.getElementById('commitChart').getContext('2d');
+ 			var skillsChart = new Chart(context).Pie($scope.data);
  		});
 
- 		function getRandomColor() {
- 			var letters = '0123456789ABCDEF'.split('');
- 			var color = '#';
- 			for (var i = 0; i < 6; i++ ) {
- 				color += letters[Math.floor(Math.random() * 16)];
- 			}
- 			return color;
- 		}
+ 		
 
  		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/languages";
  		$http.get(url).success(function(languages){
@@ -100,6 +110,7 @@
  		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/commits";
  		$http.get(url).success(function(commits){
  			$scope.commits=[];
+ 			$scope.users=[];
  			for(var i=0;i<commits.length;i++){
  				$scope.commits.push({
 	 				commiter:commits[i].commit.committer.name,
