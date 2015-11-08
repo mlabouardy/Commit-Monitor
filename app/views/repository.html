@@ -4,14 +4,23 @@
   		<label>Name:</label>
   		<input type="text" class="form-control" ng-model="repository"/>
   	</div>
-  	<div class="form-group">
-  		<label>Username:</label>
-  		<input type="text" class="form-control" ng-model="account.username"/>
-  	</div>
-  	<div class="form-group">
-  		<label>Password:</label>
-  		<input type="password" class="form-control" ng-model="account.password"/>
-  	</div>
+    <div class="form-group">
+      <label>Visibility:</label>
+      <select ng-model="visibility" class="form-control">
+          <option>Public</option>
+          <option>Private</option>
+      </select>
+    </div>
+    <div ng-if="visibility=='Private'">
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" class="form-control" ng-model="account.username"/>
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" class="form-control" ng-model="account.password"/>
+      </div>
+      </div>
   	<input type="submit" class="btn btn-success" value="Validate" ng-click="getInfo()"/>
   </form>
 </div>
