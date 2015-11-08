@@ -13,7 +13,7 @@ angular.module('commitMonitorApp')
 
     repoFactory.getCommits($routeParams.user, $routeParams.repo).success(function(commits){
  			$scope.commits=[];
- 			
+
  			$scope.users=[];
  			for(var i=0;i<commits.length;i++){
  				var message=commits[i].commit.message;
