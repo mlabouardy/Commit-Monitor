@@ -4,7 +4,12 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">Files</div>
 				<div class="panel-body">
-					
+					<ul class="list-group">
+					  <li class="list-group-item" ng-repeat="file in files">
+					  	 <span class="badge">{{file.size}}</span>
+					     <div ng-bind-html="file.mode"></div> <small>{{file.name}}</small>
+					  </li>
+					</ul>
 				</div>
 			</div>
 		</div>

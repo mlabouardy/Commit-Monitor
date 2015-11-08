@@ -31,7 +31,7 @@ angular
         templateUrl: 'views/repository-info.html',
         controller: 'RepositoryInfoCtrl'
       })
-      .when('/repository/:name/:user/commits/:sha', {
+      .when('/repository/:user/:repo/commits/:sha', {
         templateUrl: 'views/commit-files.html',
         controller: 'CommitFilesCtrl'
       })
