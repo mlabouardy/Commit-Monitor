@@ -14,4 +14,8 @@
  			$location.path('repository/'+$scope.repository);
  		});
  	};
+
+ 	$scope.getTasks=function(){
+ 		$location.path('tasks/'+$scope.repository);
+ 	}
  });

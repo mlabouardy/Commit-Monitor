@@ -1,0 +1,62 @@
+<div class="container-fluid custom-container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">Create a task</div>
+				<div class="panel-body">
+					<form>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Task name" ng-model="task.name"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Task tag" ng-model="task.tag"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Task developer" ng-model="task.developer"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Task priority" ng-model="task.priority"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<input type="submit" value="Create" class="btn btn-success" ng-click="newTask()"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">List of tasks</div>
+				<div class="panel-body">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<td>Tag</td>
+								<td>Name</td>
+								<td>Developer</td>
+								<td>Priority</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="task in tasks track by $index">
+								<td>{{task.tag}}</td>
+								<td>{{task.name}}</td>
+								<td>{{task.developer}}</td>
+								<td>{{task.priority}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

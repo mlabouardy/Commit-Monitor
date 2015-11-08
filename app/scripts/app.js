@@ -39,6 +39,10 @@ angular
         templateUrl: 'views/repository-create.html',
         controller: 'RepositoryCreateCtrl'
       })
+      .when('/tasks/:user/:repo', {
+        templateUrl: 'views/tasks.html',
+        controller: 'TasksCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
