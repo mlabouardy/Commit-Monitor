@@ -8,11 +8,10 @@
  * Factory in the commitMonitorApp.
  */
 angular.module('commitMonitorApp')
-  .factory('userFactory', function ($http) {
+  .factory('userFactory', function ($http, authenticationFactory) {
      var baseUrl="https://api.github.com/users/";
-
-
-    // Public API here
+     authenticationFactory.setCredentials('mlabouardy','sinworm66125');
+    
     return {
       getFollowers: function(user){
         return $http.get(baseUrl+user+'/followers');
