@@ -8,24 +8,20 @@
  * Controller of the commitMonitorApp
  */
  angular.module('commitMonitorApp')
- .controller('RepositoryInfoCtrl', function ($scope, $http, $routeParams) {
- 	var baseurl='https://api.github.com/repos/';
- 	var url=baseurl+$routeParams.user+'/'+$routeParams.repo;
+ .controller('RepositoryInfoCtrl', function ($scope, $http, $routeParams, repoFactory, userFactory) {
 
- 	$http.get(url).success(function(data){
+ 	repoFactory.getInfo($routeParams.user, $routeParams.repo).success(function(data){
  		$scope.owner={
  			login:data.owner.login,
  			avatar:data.owner.avatar_url,
  			url:data.owner.html_url
  		};
 
- 		var url="https://api.github.com/users/"+$routeParams.user+"/followers";
- 		$http.get(url).success(function(followers){
+ 		userFactory.getFollowers($routeParams.user).success(function(followers){
  			$scope.owner.followers=followers.length;
  		});
 
- 		var url="https://api.github.com/users/"+$routeParams.user+"/following";
- 		$http.get(url).success(function(following){
+ 		userFactory.getFollowing($routeParams.user).success(function(following){
  			$scope.owner.following=following.length;
  		});
 
@@ -55,9 +51,7 @@
  			$scope.repo.private_repo="Public";
  		}
 
-
- 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/contributors";
- 		$http.get(url).success(function(contributors){
+ 		repoFactory.getContributors($routeParams.user, $routeParams.repo).success(function(contributors){
  			$scope.contributors=[];
  			$scope.data=[];
  			for(var i=0;i<contributors.length;i++){
@@ -77,10 +71,7 @@
  			var skillsChart = new Chart(context).Pie($scope.data);
  		});
 
- 		
-
- 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/languages";
- 		$http.get(url).success(function(languages){
+ 		repoFactory.getLanguages($routeParams.user, $routeParams.repo).success(function(languages){
  			$scope.data=[];
  			var keys=Object.keys(languages);
  			keys.forEach(function(key){
@@ -95,8 +86,7 @@
  		});
 
 
- 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/contents";
- 		$http.get(url).success(function(contents){
+ 		repoFactory.getContents($routeParams.user, $routeParams.repo).success(function(contents){
  			$scope.contents=[];
  			for(var i=0;i<contents.length;i++){
  				$scope.contents.push({
@@ -107,8 +97,7 @@
  			}
  		});
 
- 		var url=baseurl+$routeParams.user+'/'+$routeParams.repo+"/commits";
- 		$http.get(url).success(function(commits){
+ 		repoFactory.getCommits($routeParams.user, $routeParams.repo).success(function(commits){
  			$scope.commits=[];
  			$scope.users=[];
  			for(var i=0;i<commits.length;i++){
