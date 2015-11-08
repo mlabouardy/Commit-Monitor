@@ -11,6 +11,7 @@
  .controller('RepositoryInfoCtrl', function ($scope, $http, $routeParams) {
  	var baseurl='https://api.github.com/repos/';
  	var url=baseurl+$routeParams.user+'/'+$routeParams.repo;
+
  	$http.get(url).success(function(data){
  		$scope.owner={
  			login:data.owner.login,
@@ -105,7 +106,7 @@
 	 				email:commits[i].commit.committer.email,
 	 				date:commits[i].commit.committer.date,
 	 				message:commits[i].commit.message,
-	 				files:commits[i].commit.tree.url
+	 				files: "#/repository/"+$routeParams.user+'/'+$routeParams.repo+"/commits/"+commits[i].commit.tree.sha
  				});
  			}
  		});

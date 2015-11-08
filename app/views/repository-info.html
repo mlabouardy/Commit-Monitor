@@ -95,6 +95,7 @@
 					<table class="table table-hover table-bordered">
 						<thead>
 							<tr>
+								<td>Files</td>
 								<td>Commiter</td>
 								<td>Email</td>
 								<td>Date</td>
@@ -103,10 +104,11 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="commit in commits | filter:search">
+								<td><a ng-href="{{commit.files}}" class="btn btn-success btn-sm">View</a></td>
 								<td>{{commit.commiter}}</td>
 								<td>{{commit.email}}</td>
 								<td>{{commit.date}}</td>
-								<td>{{commit.message}}</td>
+								<td><small>{{commit.message}}</small></td>
 							</tr>
 						<tbody>
 					</table>
