@@ -25,16 +25,6 @@
  			$scope.owner.following=following.length;
  		});
 
-
- 		function getRandomColor() {
- 			var letters = '0123456789ABCDEF'.split('');
- 			var color = '#';
- 			for (var i = 0; i < 6; i++ ) {
- 				color += letters[Math.floor(Math.random() * 16)];
- 			}
- 			return color;
- 		}
-
  		$scope.repo={
  			private_repo:data.private,
  			url:data.html_url,
@@ -67,8 +57,7 @@
  					color: getRandomColor()
  				});
  			}
- 			var context = document.getElementById('commitChart').getContext('2d');
- 			var skillsChart = new Chart(context).Pie($scope.data);
+ 			draw('commitChart', $scope.data);
  		});
 
  		repoFactory.getLanguages($routeParams.user, $routeParams.repo).success(function(languages){
@@ -81,8 +70,7 @@
  					color: getRandomColor()
  				});
  			});
- 			var context = document.getElementById('languagesChart').getContext('2d');
- 			var skillsChart = new Chart(context).Pie($scope.data);
+ 			draw('languagesChart', $scope.data);
  		});
 
 
