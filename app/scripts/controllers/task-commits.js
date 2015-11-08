@@ -10,7 +10,6 @@
 angular.module('commitMonitorApp')
   .controller('TaskCommitsCtrl', function ($scope, $routeParams, repoFactory) {
     $scope.task=$routeParams.tag;
-
     repoFactory.getCommits($routeParams.user, $routeParams.repo).success(function(commits){
  			$scope.commits=[];
  			$scope.users=[];
