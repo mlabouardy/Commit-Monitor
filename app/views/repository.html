@@ -9,12 +9,17 @@
   		<label>Name:</label>
   		<input type="text" class="form-control" ng-model="repository" placeholder="mlabouardy/Commit-Monitor"/>
   	</div>
-    <div class="form-group">
+    <div class="form-group" required>
       <label>Visibility:</label>
       <select ng-model="visibility" class="form-control">
           <option>Public</option>
           <option>Private</option>
       </select>
+    </div>
+    <div ng-if="errorVisibility!=undefined">
+      <div class="alert alert-danger" role="alert">
+        {{errorVisibility}}
+      </div>
     </div>
     <div ng-if="visibility=='Private'">
       <div class="form-group">

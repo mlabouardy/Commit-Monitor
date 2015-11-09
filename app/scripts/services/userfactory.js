@@ -8,9 +8,11 @@
  * Factory in the commitMonitorApp.
  */
 angular.module('commitMonitorApp')
-  .factory('userFactory', function ($http, authenticationFactory) {
+  .factory('userFactory', function ($cookieStore, $http, authenticationFactory) {
      var baseUrl="https://api.github.com/users/";
-     authenticationFactory.login();
+      if($cookieStore.get("visibility")=="Private"){
+      authenticationFactory.login();
+    }
     
     return {
       getFollowers: function(user){

@@ -8,10 +8,11 @@
  * Factory in the commitMonitorApp.
  */
 angular.module('commitMonitorApp')
-  .factory('repoFactory', function ($http, authenticationFactory) {
+  .factory('repoFactory', function ($cookieStore,$http, authenticationFactory) {
     var baseUrl="https://api.github.com/repos/";
-   
-    authenticationFactory.login();
+    if($cookieStore.get("visibility")=="Private"){
+      authenticationFactory.login();
+    }
     // Public API here
     return {
       getInfo: function(user, repo){
