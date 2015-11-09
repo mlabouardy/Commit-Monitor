@@ -30,13 +30,13 @@
             </button>
             <a class="navbar-brand" ng-href="#/">Commit Monitor</a>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
+          <div id="navbar" class="navbar-collapse collapse" ng-controller="MenuControllerCtrl">
             <ul class="nav navbar-nav">
-              <li class="active"><a ng-href="#/">Home</a></li>
-              <li><a ng-href="#/repository">Repository</a></li>
+              <li data-ng-class="{active: isActive('/')}"><a ng-href="#/">Home</a></li>
+              <li data-ng-class="{active: isActive('/repository')}"><a ng-href="#/repository">Repository</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/repository-create">Create</a></li>
+              <li data-ng-class="{active: isActive('/repository-create')}"><a href="#/repository-create">Create</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -83,6 +83,7 @@
         <script src="scripts/controllers/tasks.js"></script>
         <script src="scripts/controllers/task-commits.js"></script>
         <script src="scripts/services/authenticationfactory.js"></script>
+        <script src="scripts/controllers/menu-controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
